@@ -1,7 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import InputControl from '../InputControl/InputControl'
 
+import { Link , useNavigate } from 'react-router-dom'
+
+import {  signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
+
+
 const Login = () => {
+    const navigate = useNavigate();
+  const[values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [ errorMsg , setErrorMsg ] = useState("");
+  const [ submintButtonDisable , setSubmintButtonDisable ] = useState(false);
+
+  const handleSubmission=(event)=>{
+    event.preventDefault();
+
+    if (!values.email || !values.password) {
+        setErrorMsg("Fill in all fields");
+        return;
+      }
+    setErrorMsg("");  
+
+    setSubmintButtonDisable(true);
+
+    console.log("valus ",values);
+    signInWithEmailAndPassword(auth, values.email, values.password)
+  .then(async(res) => {
+    setSubmintButtonDisable(false);
+
+    navigate("/")
+  })
+
+  .catch((err) => {
+    setSubmintButtonDisable(false);
+    setErrorMsg(err.message)
+  });
+  };
+
   return (
     <div className=''>
         <section className="bg-gray-50 dark:bg-gray-900">
@@ -18,11 +58,15 @@ const Login = () => {
               <form className="space-y-4 md:space-y-6" action="#">
                   <div>
                       <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      <InputControl  type="email" name="email" id="email" placeholder="name@company.com" required />
+                      <InputControl  type="email" name="email" id="email" placeholder="name@company.com" required 
+                       onChange={(event) => 
+                        setValues((prev) => ({...prev,email: event.target.value}))}/>
                   </div>
                   <div>
                       <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <InputControl type="password" name="password" id="password" placeholder="Enter your password" required />
+                      <InputControl  type="password" name="password" id="password" placeholder="Enter your password" required 
+                      onChange={(event) => 
+                        setValues((prev) => ({...prev,password: event.target.value}))}/>
                   </div>
                   <div className="flex items-center justify-between">
                       <div className="flex items-start">
@@ -35,9 +79,10 @@ const Login = () => {
                       </div>
                       <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                   </div>
-                  <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Log in</button>
+                  <b className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {errorMsg} </b>
+                  <button onClick={handleSubmission} disabled={submintButtonDisable} type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Log in</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Don’t have an account yet? <a href="/SignUp" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                      Don’t have an account yet? <Link href="/SignUp" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
                   </p>
               </form>
           </div>
