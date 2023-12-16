@@ -1,11 +1,20 @@
 import React  from 'react'
 import { Link } from 'react-router-dom'
 
+import './home.css'
+
+
+
+
 
 
 const home = (props) => {
+
+  const { name, email, loginTime, photoURL } = props;
+
+
   return (
-    <div className='bg-gray-700 '>
+    <div className='bg-gray-700 w-full h-full'>
       {/* header of the Web */}
       <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -40,7 +49,7 @@ const home = (props) => {
                         <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
+                        <a href="/Company" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
                     </li>
                     <li>
                         <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
@@ -59,14 +68,35 @@ const home = (props) => {
         </div>
     </nav>
 </header>
-<div>
+<div className='w-full'>
 
         
-
+    <div className='flex w-full  '> 
+    <div>
+      <div className='p-3 m-5 w-[300px] bg-gray-800 border-spacing-1 text-gray-400 sidebar '>
+    <br/>
+      <div className='pl-12 pb-5 w-[300px] '>
+        <div className=" rounded-full overflow-hidden h-40 w-40">
+      {props.name ? (<img 
+      className="object-cover w-full h-full" 
+      src="https://picsum.photos/200/200" 
+      alt="Your Alt Text"
+      />) : null}
+        </div></div>
+         <h1>{props.name ? `Name: ${props.name}` : "Log in Please"}
+         {props.email && <p>Email: {props.email}</p>}
+         {loginTime && <p>Login Time: {loginTime.toLocaleString()}</p>}
+         </h1>
+    <br/>
+    </div>
+</div>
+<div className='homeBody w-full'>
         <br />
         <br />
         <h1> { props.name ? `Welcome - ${props.name}` : "logIn Please"}</h1>
         <br />
+</div>
+</div>
 </div>
 
         <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
@@ -84,7 +114,7 @@ const home = (props) => {
             <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
         </li>
         <li>
-            <a href="#" class="hover:underline">Contact</a>
+            <a href="/Contact" class="hover:underline">Contact</a>
         </li>
     </ul>
     </div>

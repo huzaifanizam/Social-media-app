@@ -11,6 +11,7 @@ import Abouts from "./components/pages/Abouts";
 import LogOut from "./components/LogOut/LogOut";
 import SideBar from "./components/SideBar/SideBar";
 import Contact from "./components/contact/Contact";
+import Company from "./components/Company/Company";
 
 
 function App() {
@@ -49,10 +50,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/LogOut" element={<LogOut />} />
-          <Route path="/" element={<Home name={userName}/>} />
+          <Route path="/" element={<Home name={userName} email={userEmail} loginTime={loginTime}/>} />
           <Route path="/Abouts" element={<Abouts name={userName} email={userEmail} loginTime={loginTime}/>} />
-          <Route path="/SideBar" element={<SideBar name={userName}/>} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/SideBar" element={<SideBar name={userName} email={userEmail} loginTime={loginTime}/>} />
+          <Route path="/Contact" element={<Contact name={userName} email={userEmail} loginTime={loginTime}/>} />
+          <Route path="/Company" element={<Company name={userName} email={userEmail} loginTime={loginTime}/>} />
         </Routes>
       </Router>
     </div>

@@ -58,7 +58,7 @@ const Contact = (props) => {
     </nav>
 </header>
 
-        <div className="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-12">
+        <div className="min-h-screen bg-gray-700 py-6 flex flex-col justify-center sm:py-12">
     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div
             className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -102,9 +102,37 @@ const Contact = (props) => {
 
             </form>
         </div>
+<br/>
     </div>
+
+<br/>
+
+<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Huzaifa Nizam™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="/Abouts" class=" hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+            <a href="#" class=" hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white hover:underline">Contact</a>
+        </li>
+    </ul>
+    </div>
+</footer>
+
+<br/>
+
 </div>
 </div>
+
     
   )
 }

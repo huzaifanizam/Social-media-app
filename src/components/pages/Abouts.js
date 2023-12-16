@@ -5,7 +5,7 @@ import SideBar from '../SideBar/SideBar'
 const Abouts = (props) => {
   const { name, email, loginTime, photoURL } = props;
   return (
-    <div className='bg-gray-600'>
+    <div className='bg-gray-700'>
       <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
@@ -39,7 +39,7 @@ const Abouts = (props) => {
                         <Link href="../" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" >Home</Link>
                     </li>
                     <li>
-                        <Link href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</Link>
+                        <Link href="/Company" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</Link>
                     </li>
                     <li>
                         <Link href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</Link>
@@ -61,24 +61,28 @@ const Abouts = (props) => {
 
 <br/>
 
-<div className='flex w-[302px]  '> 
-<div>
-      <div className='p-3 w-[300px] bg-gray-700 border-spacing-1 text-gray-400 sidebar '>
+
+    <div className='flex w-[302px]  '> 
+    <div>
+      <div className='p-3 m-5 w-[300px] bg-gray-800 border-spacing-1 text-gray-400 sidebar '>
+    <br/>
       <div className='pl-12 pb-5 w-[300px] '>
         <div className=" rounded-full overflow-hidden h-40 w-40">
-      {props.name ? `${<img 
+      {props.name ? (<img 
       className="object-cover w-full h-full" 
       src="https://picsum.photos/200/200" 
       alt="Your Alt Text"
-      />}`: null}
+      />) : null}
         </div></div>
          <h1>{props.name ? `Name: ${props.name}` : "Log in Please"}
          {props.email && <p>Email: {props.email}</p>}
          {loginTime && <p>Login Time: {loginTime.toLocaleString()}</p>}
          </h1>
+    <br/>
     </div>
 </div>
 </div>
+
 
 <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
@@ -86,7 +90,7 @@ const Abouts = (props) => {
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a href="/Abouts" class="hover:underline me-4 md:me-6">About</a>
+            <a href="/Abouts" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
             <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
